@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Chat Rooms</h2>
+<ul>
+    {% for room in rooms %}
+    <li><a href="{% url 'room' room.slug %}">{{ room.name }}</a></li>
+    {% empty %}
+    <li>No rooms available.</li>
+    {% endfor %}
+</ul>
+
+<div style="margin-top: 20px;">
+    <strong>Logged in as:</strong> {{ user.username }}
+    <form action="{% url 'logout' %}" method="post" style="display:inline;">
+        {% csrf_token %}
+        <button type="submit">Logout</button>
+    </form>
+</div>
+{% endblock %}

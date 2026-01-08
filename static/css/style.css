@@ -1,0 +1,12 @@
+body { font-family: sans-serif; background: #f0f2f5; display: flex; justify-content: center; align-items: center; min-height: 100vh; margin: 0; }
+.container { background: white; padding: 2rem; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); width: 100%; max-width: 800px; }
+/* Simple form styles */
+.form-group { margin-bottom: 1rem; }
+label { display: block; margin-bottom: 0.5rem; }
+input[type="text"], input[type="password"] { width: 100%; padding: 0.5rem; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box;}
+input[type="submit"], button { background: #0084ff; color: white; border: none; padding: 0.5rem 1rem; border-radius: 4px; cursor: pointer; }
+input[type="submit"]:hover, button:hover { background: #0073e6; }
+a { color: #0084ff; text-decoration: none; }
+a:hover { text-decoration: underline; }
+ul { list-style-type: none; padding: 0; }
+li { padding: 0.5rem 0; border-bottom: 1px solid #eee; }

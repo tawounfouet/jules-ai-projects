@@ -1,27 +1,14 @@
-from django.contrib.auth import login
+from django.shortcuts import render, get_object_or_404
 from django.contrib.auth.decorators import login_required
-from django.shortcuts import render, redirect
-from django.contrib.auth.forms import UserCreationForm
-from .models import Room, Message
+from .models import Room
 
 @login_required
-def room_list(request):
+def index(request):
     rooms = Room.objects.all()
-    return render(request, 'room_list.html', {'rooms': rooms})
+    return render(request, "chat/index.html", {"rooms": rooms})
 
 @login_required
-def room_detail(request, slug):
-    room = Room.objects.get(slug=slug)
-    messages = Message.objects.filter(room=room)[0:25]
-    return render(request, 'room.html', {'room': room, 'messages': messages})
-
-def signup(request):
-    if request.method == 'POST':
-        form = UserCreationForm(request.POST)
-        if form.is_valid():
-            user = form.save()
-            login(request, user)
-            return redirect('room_list')
-    else:
-        form = UserCreationForm()
-    return render(request, 'signup.html', {'form': form})
+def room(request, slug):
+    room = get_object_or_404(Room, slug=slug)
+    messages = room.messages.all()
+    return render(request, "chat/room.html", {"room": room, "messages": messages})

@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div style="text-align: center;">
+    <h1>Welcome to Realtime Chat</h1>
+    <p>Connect with friends and colleagues in real-time.</p>
+
+    <div style="margin-top: 2rem;">
+        {% if user.is_authenticated %}
+        <a href="{% url 'index' %}" class="btn">Go to Chat Rooms</a>
+        {% else %}
+        <a href="{% url 'login' %}" class="btn">Login</a>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}
