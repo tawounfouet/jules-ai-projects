@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block title %}Chat Rooms{% endblock %}
+
+{% block content %}
+    <h2>Chat Rooms</h2>
+    <ul>
+        {% for room in rooms %}
+            <li><a href="{% url 'room_detail' room.slug %}">{{ room.name }}</a></li>
+        {% empty %}
+            <li>No rooms available.</li>
+        {% endfor %}
+    </ul>
+{% endblock %}
